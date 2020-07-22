@@ -39,7 +39,7 @@ import com.android.launcher3.util.Preconditions;
 import com.android.launcher3.util.SecureSettingsObserver;
 import com.android.launcher3.widget.custom.CustomWidgetManager;
 
-import com.android.internal.util.crdroid.Utils;
+import com.android.internal.util.bliss.BlissUtils;
 
 public class LauncherAppState {
 
@@ -82,9 +82,8 @@ public class LauncherAppState {
         Preconditions.assertUIThread();
         mContext = context;
 
-        setSearchAppAvailable(Utils.isPackageInstalled(context, Utilities.SEARCH_PACKAGE));
-        setCalendarAppAvailable(Utils.isPackageInstalled(context, "com.google.android.calendar"));
-
+        setSearchAppAvailable(BlissUtils.isPackageInstalled(context, Utilities.SEARCH_PACKAGE));
+        setCalendarAppAvailable(BlissUtils.isPackageInstalled(context, "com.google.android.calendar"));
         mInvariantDeviceProfile = InvariantDeviceProfile.INSTANCE.get(mContext);
         mIconCache = new IconCache(mContext, mInvariantDeviceProfile);
         mWidgetCache = new WidgetPreviewLoader(mContext, mIconCache);
